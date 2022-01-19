@@ -1,0 +1,21 @@
+.sortContainer{
+    position: relative;
+    display: flex;
+    align-items:center;
+    cursor: pointer;
+}
+.sortContainer h4{
+    margin-left: 10px;
+    color: #39335C;
+    font-size: 18px;
+    font-weight: 700;
+}
+.sortIcon{
+    width: 18px;
+    height: 18px;
+    background-image: url(/src/Assets/sort.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}

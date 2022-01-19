@@ -1,0 +1,30 @@
+.searchBar{
+    display: flex;
+    justify-content: space-between;
+    max-width: 560px;
+}
+.inputContainer{
+    position: relative;
+    flex: 1;
+    margin-right: 4%;
+}
+.inputContainer img{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+}
+.searchBar input{
+    display: block;
+    width: 100%;    
+    border-radius: 30px;
+    border: 1px solid #E1E7FC;
+    padding: 11px 16px 11px 50px;
+    /* color: #D8D8D8; */
+    /* font-weight: ; */
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.searchBar input:focus{
+    outline: 1px solid #A259FF;
+}
