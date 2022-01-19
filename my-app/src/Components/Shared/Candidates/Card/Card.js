@@ -1,11 +1,10 @@
 import Button from '../../Button/Button';
 import StatsItem from './StatsItem';
-// import pin from '../../../../Assets/pin.js';
 import options from '../../../../Assets/options.svg';
-// import gitUser from '../../../../Assets/gitUser.png';
 import './Card.css';
 
 function Card(props){
+    console.log(props);
     const stats=[
         {
             title: "Stars",

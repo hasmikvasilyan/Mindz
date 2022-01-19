@@ -6,6 +6,7 @@ import Sort from "../Sort/Sort";
 import { useState, useEffect } from "react";
 
 const Candidates = (props)=>{  
+    console.log(props);
     const[candidatesData, setCandidatesData]=useState([]);
 
     useEffect(() => {
