@@ -1,0 +1,59 @@
+.cardContainer{
+    flex-basis: 25%;
+    margin-bottom: 35px;
+    padding: 0 1.3%;
+    box-sizing: border-box;
+}
+.card{
+    width: 100%;
+    max-width: 270px;
+    margin: 0 auto;
+    border-radius: 13px;
+    background-color: #F9F9FC;
+    padding: 15px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.cardOptions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pinContainer{
+    display: flex;
+    padding: 14px;
+    background-color: #fff;
+    border-radius: 5px;    
+    background-image: url(/src/Assets/pin.svg);
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.pinContainer:hover{
+    background-image: url(/src/Assets/filledPin.svg);
+}
+.candidateImg{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+.candidateName{
+    color: #39335C;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+.candidatePos{
+    margin-bottom: 30px;
+    color: #A8A2AF;
+    font-size: 16px;
+    font-weight: 400;
+    
+}
+.shortStats{
+    display: flex;
+    justify-content: space-between;   
+    margin: 0 -7% 28px; 
+    list-style-type: none;
+}

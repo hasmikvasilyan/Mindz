@@ -1,0 +1,33 @@
+.sortMenu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    color: transparent;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;     
+}
+sortMenu:focus{
+    border: none;
+    outline: none;
+}
+.sortMenu li{
+    padding: 12px 15px;
+    color: #A8A2AF;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+.sortMenu li:not(:last-child) {
+    border-bottom: 1px solid #E0E0E0;
+}
+.sortMenu li:hover{
+    background-color: #5950C0;
+    color: #fff;
+}

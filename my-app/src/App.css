@@ -1,4 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-body{
+body, *{
   font-family: 'Roboto', sans-serif;
+  color: #39335C;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 0 0 1px red;
+}
+body{
+  overflow-x: hidden;
+}
+ul{
+  list-style-type: none;
+}
+button,input{
+  background-color: transparent;
+  border: none;
 }

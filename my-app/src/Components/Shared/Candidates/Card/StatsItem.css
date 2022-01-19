@@ -1,0 +1,25 @@
+.statsItem{
+    position: relative;
+    padding: 0 7%;
+    text-align: center;
+}
+.statsItem:not(:last-child):after{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background-color: #989EB2;
+    content: "";
+}
+.statsName{
+    margin-bottom: 6px;
+    color: #5950C0;
+    font-size: 14px;
+    font-weight: 500;
+}
+.statsQuantity{
+    color: #A8A2AF;
+    font-size: 16px;
+    font-weight: 500;
+}
