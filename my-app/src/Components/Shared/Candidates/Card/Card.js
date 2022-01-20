@@ -4,7 +4,6 @@ import options from '../../../../Assets/options.svg';
 import './Card.css';
 
 function Card(props){
-    console.log(props);
     const stats=[
         {
             title: "Stars",
