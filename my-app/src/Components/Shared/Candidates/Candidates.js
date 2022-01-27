@@ -6,11 +6,12 @@ import Sort from "../Sort/Sort";
 import { useState, useEffect } from "react";
 
 const Candidates = (props)=>{  
+    
     const[candidatesData, setCandidatesData]=useState([]);
 
     useEffect(() => {
         setCandidatesData(props.candidates);
-      });
+    });
     
     const sortItems=[
         {
@@ -30,9 +31,7 @@ const Candidates = (props)=>{
         }] ;
         const handleSortChange=(sortedData)=>{
             setCandidatesData([...sortedData])
-        }
-
-    
+        }    
     return (
         <Container>
             <div className="titleContainer">

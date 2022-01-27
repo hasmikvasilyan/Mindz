@@ -1,12 +1,13 @@
 import './RepoItem.css';
-import folder from '../../../Assets/folder.js';
+import ReadMore from './ReadMore';
 
-function RepoItem(){
+function RepoItem(props){
+    // console.log(props.repoDescription);
     return(
-        <li>
-            <img src={folder}/>
-            <h4 className='repoTitle'>{}</h4>
-            <p className='repoDescription'>{}</p>
+        <li className='repoItem'>
+            <h4 className='repoTitle'>{props.repoName}</h4>
+            <ReadMore repoDescription={props.repoDescription?props.repoDescription:""}/>
+            {/* <ReadMore className='repoDescription'>{props.repoDescription}</ReadMore> */}
         </li>
     )
 }

@@ -1,33 +1,75 @@
+import axios from 'axios';
+import {useContext, useEffect, useState} from 'react';
+import UserContext from '../../../Components/Context/UserContext';
 import Title from '../../Shared/Title/Title';
 import Container from '../../Shared/Container/Container';
 import RepoItem from './RepoItem';
+import Sort from '../../Shared/Sort/Sort';
 import './Repos.css';
 
 function Repos(){
+    const [repos,setRepos]=useState([]);
+    const userCtx=useContext(UserContext);
+    
+    useEffect(() => {
+        fetchRepos();
+    },[]);
+    const fetchRepos=()=>{
+        axios.get(`https://api.github.com/users/${userCtx.user.username}/repos`)
+        .then(res=>{
+            setRepos(res.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }    
     const sortItems=[
         {
             id:1,
-            name: "stars",
-            sortProperty: 'stars'
+            name: "by size of repo",
+            sortProperty: 'size'
         }, 
         {
             id:2,
-            name: "by number of repos",
-            sortProperty: 'reposCount'
+            name: "by number of stars",
+            sortProperty: 'stargazers_count'
         },
         {
             id:3,
-            name: "by number of followers",
-            sortProperty: 'followersCount'
-        }] ;
+            name: "by number of forks",
+            sortProperty: 'forks_count'
+        },
+        // {
+        //     id:4,
+        //     name: "by creation date",
+        //     sortProperty: 'created_at'
+        // }
+    ] ;
+    const handleSortChange=(sortedData)=>{
+        setRepos([...sortedData])
+    } 
     return(       
         <section className='repoContainer'>
-            <Container>        
-                <Title>Top Repos</Title>
-                <ul>
-                    {Repos.map(repo=>{
+            <Container>     
+                <div className="titleContainer">   
+                    <Title>Top Repos</Title>
+                    <Sort  
+                        sortItems={sortItems} 
+                        data={repos}
+                        onChange={handleSortChange} 
+                    />
+                </div>
+                <ul className='repoContainer'>
+                    {repos.slice(0,3).map(repo=>{
                         return(
-                            <RepoItem></RepoItem>
+                            <RepoItem 
+                                key={repo.id}
+                                repoName={repo.name}
+                                repoSize={repo.size}
+                                repoStars={repo.stargazers_count}
+                                repoForks={repo.forks_count}
+                                repoDescription={repo.description}
+                            />
                         )
                     })}
                 </ul>

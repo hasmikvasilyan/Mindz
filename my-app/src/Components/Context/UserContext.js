@@ -1,7 +1,6 @@
 import React from 'react';
 const UserContext =React.createContext({
-    users: [],
-    totalAmount: 0,
+    user: {},    
     addUser: (item)=>{},
     removeUser:(id)=>{}
 });

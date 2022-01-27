@@ -1,9 +1,13 @@
-import Button from '../../Button/Button';
+import { Link,useNavigate } from 'react-router-dom';
+import {useContext} from 'react';
+import UserContext from '../../../Context/UserContext';
 import StatsItem from './StatsItem';
 import options from '../../../../Assets/options.svg';
 import './Card.css';
 
 function Card(props){
+    const navigate=useNavigate();
+    const userCtx=useContext(UserContext);
     const stats=[
         {
             title: "Stars",
@@ -18,9 +22,18 @@ function Card(props){
             quantity: props.reposCount,
         }
     ];
-    const handleProfileView=()=>{
-
+    const handleClick=()=>{  
+        navigate(`/profiles/${props.username}`, {state:`${props.username}`});
+        userCtx.addUser({
+            // id: props.id,
+            username:props.username,
+            // img: props.img,
+            // followersCount: props.followersCount,
+            // price: props.price,
+            // reposURL:props.reposURL
+        });
     }
+    
     return(
         <li className="cardContainer">
             <div className="card">
@@ -41,7 +54,7 @@ function Card(props){
                         }
                     )}
                 </ul>
-                <Button name="View Profile" reposURL={props.reposURL}/>
+                <button className="btn" onClick={handleClick}>View Profile</button>
             </div>
         </li>
     )

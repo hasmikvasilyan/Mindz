@@ -20,14 +20,12 @@ function SearchBar(props){
     }
     const handleSubmit=async(e)=>{
         e.preventDefault();
-        // setGitusers([]);
         await searchUser();
-        // setGitusers(await searchUser());
     }
     const searchUser=async()=>{ 
         let testo=[];       
         // setLoading(true);
-        fetch(`https://api.github.com/search/users?q=${inputValue}`).then(res=>res.json())
+        fetch(`https://api.github.com/search/users?q=${inputValue}&client_id=2099efb8ccfd946e0f0e&client_secret=0560f96d4de146b6bfff2f1334d3dba5d68164cb`).then(res=>res.json())
         .then(async data=>{
             // setLoading(false);
             
