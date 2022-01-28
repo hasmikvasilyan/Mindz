@@ -13,8 +13,7 @@ function ReadMore(props){
             {isReadMore&&isLongEnough?text.slice(0,200):text}
             {isLongEnough && 
                 <span onClick={handleClick} className="readOrHide">
-                {isReadMore ? " ...read more" : " show less"}
-            
+                {isReadMore ? " ...read more" : " show less"}            
             </span>
             }
         </p> 
