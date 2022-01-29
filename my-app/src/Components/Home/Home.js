@@ -8,9 +8,7 @@ import ContactUs from './ContactUs/ContactUs';
 
 function Home(){
     return(
-        <>
-            <Header/>
-            {/* <Top/> */}
+        <>            
             <Services/>
             <Partners/>
             <Products/>
