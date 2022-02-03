@@ -28,3 +28,11 @@
 .searchBar input:focus{
     outline: 1px solid #A259FF;
 }
+.loader{
+    width: 9%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

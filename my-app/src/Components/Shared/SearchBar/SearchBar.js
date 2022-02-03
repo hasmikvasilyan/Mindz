@@ -3,55 +3,50 @@ import axios from 'axios';
 import Button from '../Button/Button';
 import Candidates from "../Candidates/Candidates";
 import './SearchBar.css';
-import search from '../../../Assets/search.svg'
+import search from '../../../Assets/search.svg';
+import loader from '../../../Assets/loader.svg'
 
-function SearchBar(props){
-    
+function SearchBar(props){    
     const [inputValue,setInputValue]=useState("");
     const [gitusers,setGitusers]=useState([]);
-    // const [laoding,setLoading]=useState(false);
-    // const [followers,setFollowers]=useState("");
+    const [isLoading,setIsLoading]=useState(false);
     
-   
-   
-
     const handleChange=(e)=>{
         setInputValue(e.target.value);
-    }
+    };
     const handleSubmit=async(e)=>{
         e.preventDefault();
-        await searchUser();
-    }
-    const searchUser=async()=>{ 
-        let testo=[];       
-        // setLoading(true);
-        fetch(`https://api.github.com/search/users?q=${inputValue}&client_id=2099efb8ccfd946e0f0e&client_secret=0560f96d4de146b6bfff2f1334d3dba5d68164cb`).then(res=>res.json())
-        .then(async data=>{
-            // setLoading(false);
-            
-            await Promise.all(data.items.map(user=>{
-                return(
-                 fetch(`https://api.github.com/users/${user.login}`).then(res=>res.json()).then(data=>{
-                    // setLoading(false);                    
-                    let test={
-                        id:data.id, 
-                        gitUser:data.login, 
-                        img:data.avatar_url,
-                        followersCount:data.followers,
-                        reposURL:data.repos_url,
-                        reposCount:data.public_repos,
-                        gitURL:data.url,
-                        email:data.email,
-
+        await searchUsers();
+    };
+    const searchUsers=async()=>{
+        setGitusers([]);
+        setIsLoading(true);
+        const gitUsersData=[];
+        const AccessToken='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';
+        const fetchUrl=`https://api.github.com/search/users?q=${inputValue}&per_page=28`;
+        const config= {
+            headers: {'Authorization': `token ${AccessToken}`}
+        };
+        axios.get(fetchUrl,config)
+            .then(async res=>{
+            await Promise.all(res.data.items.map((user) => axios.get(`https://api.github.com/users/${user.login}`,config).then(
+                (res => {
+                    let gitUserData={
+                        id:res.data.id, 
+                        gitUser:res.data.login, 
+                        img:res.data.avatar_url,
+                        followersCount:res.data.followers,
+                        reposURL:res.data.repos_url,
+                        reposCount:res.data.public_repos,
+                        gitURL:res.data.url,
+                        email:res.data.email,
                     }
-                    testo.push(test);                                    
-                }))
-                
-        }))
-        setGitusers(testo); 
-    })      
-    }  
-
+                    gitUsersData.push(gitUserData);
+                }))))            
+            setGitusers(gitUsersData);
+            setIsLoading(false);
+        })
+    } 
     return(
         <>
             <form onSubmit={handleSubmit} className="searchBar">
@@ -61,6 +56,7 @@ function SearchBar(props){
                 </div>           
             <Button name="Search" class="filled"/>   
             </form>
+            {isLoading&&<img className="loader" src={loader}/>}
             <Candidates candidates={gitusers}/>
         </>
     )

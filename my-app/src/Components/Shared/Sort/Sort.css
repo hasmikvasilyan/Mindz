@@ -1,8 +1,7 @@
 .sortContainer{
     position: relative;
     display: flex;
-    align-items:center;
-    cursor: pointer;
+    align-items:center;    
 }
 .sortContainer h4{
     margin-left: 10px;

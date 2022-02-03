@@ -1,13 +1,14 @@
-import { Link,useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import {useContext} from 'react';
 import UserContext from '../../../Context/UserContext';
 import StatsItem from './StatsItem';
+import GreyRoundedBg from '../GreyRoundedBg/GreyRoundedBg';
 import options from '../../../../Assets/options.svg';
 import './Card.css';
 
 function Card(props){
     const navigate=useNavigate();
-    const userCtx=useContext(UserContext);
+    // const userCtx=useContext(UserContext);
     const stats=[
         {
             title: "Stars",
@@ -22,21 +23,21 @@ function Card(props){
             quantity: props.reposCount,
         }
     ];
-    const handleClick=()=>{  
+    const handleClick=()=>{         
         navigate(`/profiles/${props.username}`, {state:`${props.username}`});
-        userCtx.addUser({
-            // id: props.id,
-            username:props.username,
-            // img: props.img,
-            // followersCount: props.followersCount,
-            // price: props.price,
-            // reposURL:props.reposURL
-        });
+        // userCtx.addUser({
+        //     // id: props.id,
+        //     username:props.username,
+        //     // img: props.img,
+        //     // followersCount: props.followersCount,
+        //     // price: props.price,
+        //     // reposURL:props.reposURL
+        // });
     }
     
     return(
         <li className="cardContainer">
-            <div className="card">
+            <GreyRoundedBg styleName="card">
                 <div className="cardOptions">
                     <span className="pinContainer"></span>
                     <img src={options}/>
@@ -55,7 +56,7 @@ function Card(props){
                     )}
                 </ul>
                 <button className="btn" onClick={handleClick}>View Profile</button>
-            </div>
+            </GreyRoundedBg>
         </li>
     )
    

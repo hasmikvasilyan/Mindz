@@ -1,43 +1,50 @@
 import PersonalInfoItem from './PersonalInfoItem';
-import './PersonalInfo';
+import GreyRoundedBg from'../../Shared/Candidates/GreyRoundedBg/GreyRoundedBg';
+import './PersonalInfo.css';
 import location from '../../../Assets/location.svg';
 import experience from '../../../Assets/experience.svg';
 import email from '../../../Assets/email.svg';
 import education from '../../../Assets/education.svg';
 import redirect from '../../../Assets/redirect.svg';
-import Title from '../../Shared/Title/Title';
 
-function PersonalInfo(props){
+function PersonalInfo(props){    
+    console.log("PersonalInfo",props);
+    const formatDate=(date)=>{
+        const formattedDate = new Date(date);
+        const [day,month,year]= [formattedDate.getDate(),formattedDate.toLocaleString('en-us', { month: 'short' }), formattedDate.getFullYear()];
+        return `${day} ${month} ${year}`
+    }
     const personalInfo=[
         {
             id:1,
-            infoName:props.infoName,
+            infoName:props.profile.location,
             imgURL:location,
         },
         {
             id:2,
-            infoName:props.infoName,
+            infoName:formatDate(props.profile.joined),
             imgURL:experience,
         },
         {
             id:3,
-            infoName:props.infoName,
+            infoName:props.profile.email,
             imgURL:email,
         },
         {
             id:4,
-            infoName:props.infoName,
+            infoName:props.profile.company,
             imgURL:education,
         },
         {
             id:5,
-            infoName:props.infoName,
+            infoName:"View profile on GitHub",
             imgURL:redirect,
+            href:props.profile.link,
         },
-    ]
+    ];
     return(
-        <div className='personalInfoContainer'>
-            <Title />
+        <GreyRoundedBg>
+            <h5 className="personalInfoTitle">Perasonal Info</h5>                   
             <ul>
                 {
                     personalInfo.map(item=>{
@@ -45,13 +52,12 @@ function PersonalInfo(props){
                             key={item.id} 
                             infoName={item.infoName} 
                             imgURL={item.imgURL}
+                            link={item.href}
                         />
                     })
-                }
-                <PersonalInfo img/>
-                
+                }                            
             </ul>
-        </div>
+        </GreyRoundedBg>
     )
 }
 export default PersonalInfo

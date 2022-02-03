@@ -2,20 +2,19 @@ import axios from 'axios';
 import {useContext, useEffect, useState} from 'react';
 import UserContext from '../../../Components/Context/UserContext';
 import Title from '../../Shared/Title/Title';
-import Container from '../../Shared/Container/Container';
 import RepoItem from './RepoItem';
 import Sort from '../../Shared/Sort/Sort';
 import './Repos.css';
 
-function Repos(){
+function Repos(props){
     const [repos,setRepos]=useState([]);
-    const userCtx=useContext(UserContext);
+    // const userCtx=useContext(UserContext);
     
     useEffect(() => {
         fetchRepos();
     },[]);
     const fetchRepos=()=>{
-        axios.get(`https://api.github.com/users/${userCtx.user.username}/repos`)
+        axios.get(`https://api.github.com/users/${props.profileUserName}/repos`)
         .then(res=>{
             setRepos(res.data);
         })
@@ -49,8 +48,7 @@ function Repos(){
         setRepos([...sortedData])
     } 
     return(       
-        <section className='repoContainer'>
-            <Container>     
+        <section>           
                 <div className="titleContainer">   
                     <Title>Top Repos</Title>
                     <Sort  
@@ -72,8 +70,7 @@ function Repos(){
                             />
                         )
                     })}
-                </ul>
-            </Container>
+                </ul>            
         </section>
     )
 }

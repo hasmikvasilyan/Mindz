@@ -1,7 +1,7 @@
 import './Container.css';
 function Container(props){
     return(
-        <div className="container">{props.children}</div>
+        <div className={`container ${props.styleName||""}`}>{props.children}</div>
     )
 }
 

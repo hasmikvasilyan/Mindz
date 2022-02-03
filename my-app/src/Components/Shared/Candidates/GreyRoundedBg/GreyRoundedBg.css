@@ -1,0 +1,9 @@
+.greyRoundedContainer{
+    padding: 15px;
+    border-radius: 12px;
+    background-color: #F9F9FC;
+    box-sizing: border-box;
+}
+.forksContainer{
+    margin-top: 35px;
+}

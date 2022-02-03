@@ -1,7 +1,6 @@
 import './StatsItem.css';
 
 function StatsItem(props){
-    console.log(props);
     return(
         <li className="statsItem">
             <h4 className="statsName">{props.name}</h4>

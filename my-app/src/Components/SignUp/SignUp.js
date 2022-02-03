@@ -46,7 +46,6 @@ export default function SignUp({ sumbitForm }) {
                 <h1>Sign Up to</h1>
                 <p>mindz in simply</p>
                 <p>If you already have an account </p>
-
                 <p>You can < Link to={'/login'}>Login here !</Link> </p>
             </div>
             <div className="signUpForm">
