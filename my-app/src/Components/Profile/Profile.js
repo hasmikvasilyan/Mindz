@@ -6,18 +6,18 @@ import Repos from './Repos/Repos';
 import Container from '../Shared/Container/Container';
 import PersonalInfo from './PersonalInfo/PersonalInfo';
 import ForksInfo from './ForksInfo/ForksInfo';
+import MainInfo from './MainInfo/MainInfo';
 
 
 function Profile(){
     const[profile,setProfile]=useState([]);
     const[forkedUsers,setForkedUsers]=useState(null);
     let profileUserName = useParams();
-
     useEffect(() => {
         fetchUser();
     },[]);
     const fetchUser=async()=>{
-        const AccessToken='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';
+        const AccessToken='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';
         const config= {
             headers: {'Authorization': `token ${AccessToken}`}
         };
@@ -39,6 +39,7 @@ function Profile(){
                     return forkedUsersData
                 })
                 );
+                console.log("user",user);
                 setProfile({
                     location:user.location,
                     joined: user.created_at,
@@ -47,9 +48,10 @@ function Profile(){
                     link:`https://github.com/${user.login}`,
                     img:user.avatar_url,
                     repos:user.public_repos,                
-                    followers:user.followers,                                
+                    followers:user.followers,
+                    // stars: user.stars, 
+                    // codeLines: user.codeLines,                               
                 });
-                console.log(forkedUsersData);
                 setForkedUsers(forkedUsersData);  
             }),            
         );        
@@ -58,6 +60,7 @@ function Profile(){
     return(
         <Container styleName="profileContainer">
             <main className='profileWrap'>
+                <MainInfo profile={profile}/>
                 <Repos profileUserName={profileUserName.profileId}/>
             </main>
             <div className="profileSidebar">
