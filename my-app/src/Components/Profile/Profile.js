@@ -17,7 +17,7 @@ function Profile(){
         fetchUser();
     },[]);
     const fetchUser=async()=>{
-        const AccessToken='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';
+        const AccessToken='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';
         const config= {
             headers: {'Authorization': `token ${AccessToken}`}
         };

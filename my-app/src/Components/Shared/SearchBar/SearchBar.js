@@ -22,8 +22,8 @@ function SearchBar(props){
         setGitusers([]);
         setIsLoading(true);
         const gitUsersData=[];
-        const AccessToken='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';
-        const fetchUrl=`https://api.github.com/search/users?q=${inputValue}&per_page=28`;
+        const AccessToken='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';
+        const fetchUrl=`https://api.github.com/search/users?q=${inputValue}`;
         const config= {
             headers: {'Authorization': `token ${AccessToken}`}
         };
