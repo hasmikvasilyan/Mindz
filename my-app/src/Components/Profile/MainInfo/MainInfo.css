@@ -1,0 +1,8 @@
+.mainInfoConatiner ul{
+    display: flex;
+    justify-content: space-between;
+}
+.mainInfoConatiner li{
+    flex-basis: 23%;
+
+}

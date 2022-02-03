@@ -1,0 +1,37 @@
+.mainInfoItem:first-child .iconWrapper{
+    background-color: rgba(162,89,255,0.15);
+}
+.mainInfoItem:nth-child(2) .iconWrapper{
+    background-color: rgba(242,78,30,0.15);
+}
+.mainInfoItem:nth-child(3) .iconWrapper{
+    background-color: rgba(10,207,131,0.15);
+}
+.mainInfoItem:nth-child(4) .iconWrapper{
+    background-color: rgba(239,194,36,0.15);
+}
+.iconWrapper{
+    display: inline-flex;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.iconWrapper img{
+    width: 100%;
+    height: auto;
+}
+.mainInfoFigure{
+    color: #39335C;
+    font-size: 26px;
+    font-weight: 500;
+
+}
+.mainInfoName{
+    color: #A8A2AF;
+    font-size: 14px;
+}
