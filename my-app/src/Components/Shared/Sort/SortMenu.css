@@ -10,7 +10,8 @@
     background-color: transparent;
     -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;     
+    appearance: none;    
+    cursor: pointer; 
 }
 sortMenu:focus{
     border: none;

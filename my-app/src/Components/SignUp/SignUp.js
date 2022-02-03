@@ -131,6 +131,7 @@ export default function SignUp({ sumbitForm }) {
                 </div>
             </Container>
         </div >
+
     )
 
 

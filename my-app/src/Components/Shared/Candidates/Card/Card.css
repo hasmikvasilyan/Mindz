@@ -8,11 +8,11 @@
     width: 100%;
     max-width: 270px;
     margin: 0 auto;
-    border-radius: 13px;
-    background-color: #F9F9FC;
-    padding: 15px;
+    /* border-radius: 12px; */
+    /* background-color: #F9F9FC; */
+    /* padding: 15px; */
     text-align: center;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 .cardOptions{
     display: flex;
@@ -49,6 +49,7 @@
     color: #A8A2AF;
     font-size: 16px;
     font-weight: 400;
+    text-align: center;
     
 }
 .shortStats{

@@ -1,0 +1,25 @@
+.personalInfoItem{
+    display: flex;
+    align-items: center;
+}
+.personalInfoItem img{
+    width: 20px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.personalListName{
+    margin: 0 0 15px 15px;
+    font-size: 14px;
+    color: #8291A9;
+}
+.forkedItem img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.forkedItem>div {
+    flex:2;
+    margin-left: 7px;
+    border-bottom: 1.5px solid #E0E0E0;
+}
