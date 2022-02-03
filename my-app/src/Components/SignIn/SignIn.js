@@ -1,35 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, } from "react";
 import validator from "validator";
 import { TextField } from "@material-ui/core/"
 import './SignIn.css';
 import { Link } from "react-router-dom"
-//import Header from "../Shared/Header/Header";
+import Container from "../Shared/Container/Container";
+
 
 export default function SignIn() {
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState('')
     const [errorEmail, setErrorEmail] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
-    useEffect(() => {
-        setErrorEmail(validator.isEmail(email))
-    }, [email])
+
     const handelLogin = (event) => {
         event.preventDefault()
         setErrorEmail(!validator.isEmail(email))
         setPasswordError(validator.isEmpty(password))
     }
+
     return (
-        <>
-            <div className="signinContainer">
+        <div className="myPage">
+            <Container styleName="signInContainer">
+
                 <div className="info">
-                    <h1>Sign in to</h1>
-                    <p>mindz in simply</p>
-                    <p>If you don't have an account register</p>
-                    <p>You can <Link to={"/register"}> Register here!</Link></p>
-                </div>
+                    < h1 className="pageTitle"> Sign in to</h1 >
+                    <p className="paragraf">
+                        <p className="mindzInfo"> Mindz in simply</p><br />
+                        If you don't have an account register<br />
+                        You can <Link to={"/register"} className="registerLink"> Register here!</Link></p>
+                </div >
                 <div className="signInForm">
                     <form className="signForm">
-                        <h2>Sign In</h2>
+                        <h2 className="title">Sign In</h2>
+
                         <div className="inputEmailUser">
                             <TextField
                                 error={errorEmail}
@@ -61,7 +65,9 @@ export default function SignIn() {
                         <button className="buttonSignIn" onClick={handelLogin}>Login</button>
                     </form>
                 </div>
-            </div >
-        </>
+
+            </Container >
+        </div >
     )
+
 }
