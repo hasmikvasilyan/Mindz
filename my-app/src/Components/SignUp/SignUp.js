@@ -4,9 +4,12 @@ import "./SignUp.css"
 import { TextField } from "@material-ui/core/"
 import { Link } from "react-router-dom"
 import Container from "../Shared/Container/Container";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../Firebase"
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp({ sumbitForm }) {
-
+    let navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [number, setNumber] = useState('')
     const [password, setPassword] = useState('')
@@ -17,11 +20,8 @@ export default function SignUp({ sumbitForm }) {
     const [numberError, setNumberError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
     const [confirmPasswordError, setConfirmPasswordError] = useState(false)
-
-
-
     const validatePassword = (password) => {
-        return !(password.length < 8)
+        return !(password.length < 6)
     }
     const valEqualPassword = (confirmPassword, password) => {
         return !(confirmPassword === password)
@@ -31,14 +31,27 @@ export default function SignUp({ sumbitForm }) {
 
         return re.test(number);
     }
+    const register = async () => {
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            navigate("/profiles")
+        } catch (err) {
+        alert(err)
+        }
+    }
+
 
     const handelOnSumbit = (event) => {
         event.preventDefault()
+
         setEmailError(!validator.isEmail(email))
         setUserNameError(validator.isEmpty(userName))
         setNumberError(!validatePhoneNumber(number))
         setPasswordError(!(validatePassword(password)))
         setConfirmPasswordError(valEqualPassword(confirmPassword, password))
+
+        register()
+
     }
 
     return (

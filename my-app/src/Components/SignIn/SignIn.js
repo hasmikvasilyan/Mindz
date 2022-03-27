@@ -4,19 +4,33 @@ import { TextField } from "@material-ui/core/"
 import './SignIn.css';
 import { Link } from "react-router-dom"
 import Container from "../Shared/Container/Container";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom"
+import { auth } from "../../Firebase"
 
 
 export default function SignIn() {
-
+    let navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState('')
     const [errorEmail, setErrorEmail] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
+    const login = async () => {
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+            navigate("/profil")
+
+        } catch (err) {
+            alert(err.massage)
+        }
+
+    }
 
     const handelLogin = (event) => {
         event.preventDefault()
         setErrorEmail(!validator.isEmail(email))
         setPasswordError(validator.isEmpty(password))
+        login()
     }
 
     return (
@@ -71,3 +85,10 @@ export default function SignIn() {
     )
 
 }
+
+
+
+
+
+
+
